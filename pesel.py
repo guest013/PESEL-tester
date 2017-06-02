@@ -7,10 +7,10 @@ root.config(bd=4)
 pesel = IntVar()
 
 def check_pesel():
-    e = E.get()
-    first_10 = 1*int(e[0])+3*int(e[1])+7*int(e[2])+9*int(e[3])+1*int(e[4])+3*int(e[5])+7*int(e[6])+9*int(e[7])+1*int(e[8])+3*int(e[9])
-    last = 10 - int(str(first_10)[-1])
-    if str(last)[-1] == str(e)[-1]:
+    const = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3]
+    pesel = E.get()
+    check = sum(map(lambda x,y: x*y, const, map(int, pesel)))
+    if str(check)[-1] == str(pesel)[-1]:
         B.config(text="PESEL jest prawidłowy")
         B.config(fg='green')
     else:
